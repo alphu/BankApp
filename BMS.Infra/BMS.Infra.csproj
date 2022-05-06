@@ -5,6 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Repository\NewFolder1\**" />
+    <Compile Remove="Repository\NewFolder2\**" />
+    <Compile Remove="Repository\NewFolder3\**" />
+    <EmbeddedResource Remove="Repository\NewFolder1\**" />
+    <EmbeddedResource Remove="Repository\NewFolder2\**" />
+    <EmbeddedResource Remove="Repository\NewFolder3\**" />
+    <None Remove="Repository\NewFolder1\**" />
+    <None Remove="Repository\NewFolder2\**" />
+    <None Remove="Repository\NewFolder3\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Repository\Register\IRegisterRepositroycs" />
   </ItemGroup>
 

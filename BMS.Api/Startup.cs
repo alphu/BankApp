@@ -1,6 +1,8 @@
 using BMS.Application.Interfaces;
 using BMS.Application.Services;
 using BMS.Infra.Data;
+using BMS.Infra.Repository.LoanModule;
+using BMS.Infra.Repository.Register;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -59,7 +61,8 @@ namespace BMS.Api
             });
 
             services.AddScoped<ITokenService, TokenService>();
-
+            services.AddScoped<IRegisterRepositroy, RegisterRepositroy>();
+            services.AddScoped<ILoanRepository, LoanRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,10 +75,9 @@ namespace BMS.Api
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BMS.Api v1"));
             }
 
-            app.UseRouting();
-
-            app.UseAuthorization();
+            app.UseRouting(); 
             app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

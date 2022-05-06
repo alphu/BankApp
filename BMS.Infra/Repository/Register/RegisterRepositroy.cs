@@ -66,5 +66,26 @@ namespace BMS.Infra.Repository.Register
                     _dbcontext.Dispose();
             }
         }
+        public Customer GetAccount(int accountNo)
+        {
+            try
+            {
+                var data = _dbcontext.Customer
+                    .Where(b => b.Id == accountNo)
+                    .FirstOrDefault();
+                return data;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw;
+            }
+            finally
+            {
+                if (_dbcontext != null)
+                    _dbcontext.Dispose();
+            }
+
+        }
     }
 }

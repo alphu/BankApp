@@ -12,5 +12,8 @@ namespace BMS.Infra.Repository.Register
         Customer CreateAccount(Customer customer);
 
         List<Customer> GetListofAccounts();
+
+        Customer GetAccount(int accountNo);
+
     }
 }

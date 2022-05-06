@@ -14,7 +14,7 @@ namespace BMS.Infra.Data
         {
         }
         public DbSet<Customer> Customer { get; set; }
-        public DbSet<Loan> Loan { get; set; }
+        public DbSet<Loan> Loans { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
