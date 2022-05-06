@@ -26,7 +26,7 @@ namespace BMS.Infra.Repository.LoanModule
             {
                 if (IsCustomerIdExists(loan.CustomerId))
                 {
-                    _dbcontext.Loans.Add(loan);
+                    _dbcontext.Loan.Add(loan);
                     _dbcontext.SaveChanges();
                     return loan;
                 }
@@ -36,7 +36,11 @@ namespace BMS.Infra.Repository.LoanModule
             {
                 throw new Exception(ex.Message, ex);
             }
-            
+            finally
+            {
+                if (_dbcontext != null)
+                    _dbcontext.Dispose();
+            }
         }
         public bool IsCustomerIdExists(int id)
         {
@@ -49,17 +53,13 @@ namespace BMS.Infra.Repository.LoanModule
             {
                 throw new Exception(ex.Message, ex);
             }
-            finally
-            {
-                if (_dbcontext != null)
-                    _dbcontext.Dispose();
-            }
+           
         }
         public List<Loan> GetAllLoanDetails()
         {
             try
             {
-                var Loans =_dbcontext.Loans?.ToList();
+                var Loans =_dbcontext.Loan?.ToList();
                 return Loans;
             }
             catch (Exception ex)
@@ -76,7 +76,7 @@ namespace BMS.Infra.Repository.LoanModule
         {
             try
             {
-                var data = _dbcontext.Loans
+                var data = _dbcontext.Loan
                     .Where(b => b.LoanId == loanId)
                     .FirstOrDefault();
                 return data;

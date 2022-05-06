@@ -1,5 +1,5 @@
-﻿using BMS.Application.Interfaces;
-using BMS.Application.Models;
+﻿using BMS.Application.Models;
+using BMS.Infra.Repository.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,19 +11,19 @@ namespace BMS.Api.Controllers
 {
     public class AuthController : Controller
     {
-        private readonly ITokenService _tokenService;
+        private readonly ITokenRepository _tokenRespository;
 
-        public AuthController(ITokenService tokenService)
+        public AuthController(ITokenRepository tokenRespository)
         {
 
-            _tokenService = tokenService;
+            _tokenRespository = tokenRespository;
         }
         [AllowAnonymous]
         [HttpPost]
         [Route("authenticate")]
         public IActionResult Authenticate(Request usersdata)
         {
-            var token = _tokenService.AuthenticateToken(usersdata);
+            var token = _tokenRespository.AuthenticateToken(usersdata);
 
             if (token == null)
             {
@@ -34,10 +34,10 @@ namespace BMS.Api.Controllers
         [HttpPost, Route("refresh")]
         public IActionResult Refresh(Response tokens)
         {
-            var principal = _tokenService.GetPrincipalFromExpiredToken(tokens.Access_Token);
+            var principal = _tokenRespository.GetPrincipalFromExpiredToken(tokens.Access_Token);
             Request user = new Request();
             user.Username = principal.Identity?.Name;
-            var token = _tokenService.GenerateRefreshToken(user);
+            var token = _tokenRespository.GenerateRefreshToken(user);
             return Ok(token);
         }
 

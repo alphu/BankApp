@@ -5,10 +5,10 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+namespace BMS.Infra.Repository.Authentication
 
-namespace BMS.Application.Interfaces
 {
-    public interface ITokenService
+    public interface ITokenRepository
     {
         Response AuthenticateToken(Request Users);
         string GenerateRefreshToken();

@@ -1,7 +1,5 @@
-﻿using BMS.Application.Interfaces;
-using BMS.Application.Models;
+﻿using BMS.Application.Models;
 using BMS.Infra.Data;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -13,26 +11,26 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BMS.Application.Services
+namespace BMS.Infra.Repository.Authentication
 {
-    public class TokenService : ITokenService
+    public class TokenRepository : ITokenRepository
     {
-        Dictionary<string, string> UsersRecords = new Dictionary<string, string>
-        {
-            { "user1","password1"},
-            { "user2","password2"},
-            { "user3","password3"},
-        };
+        
         private readonly IConfiguration _iconfiguration;
         public readonly BankDBContext _dbContext;
-        public TokenService(IConfiguration iconfiguration, BankDBContext dbContext)
+        public TokenRepository(IConfiguration iconfiguration, BankDBContext dbContext)
         {
             this._iconfiguration = iconfiguration;
             this._dbContext = dbContext;
         }
         public Response AuthenticateToken(Request users)
         {
-            if (!UsersRecords.Any(x => x.Key == users.Username && x.Value == users.Password))
+       
+            var UsersRecords = _dbContext.Customer
+                    .Where(b => b.Name == users.Username && b.Password==users.Password)
+                    .FirstOrDefault();
+
+           if(UsersRecords==null)
             {
                 return null;
             }
@@ -50,7 +48,7 @@ namespace BMS.Application.Services
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var refreshToken = GenerateRefreshToken();
-            return new Response { Access_Token = tokenHandler.WriteToken(token) ,Refresh_Token= refreshToken };
+            return new Response { Access_Token = tokenHandler.WriteToken(token), Refresh_Token = refreshToken };
 
         }
         public Response GenerateRefreshToken(Request user)

@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BMS.Application\BMS.Application.csproj" />
+    <ProjectReference Include="..\BMS.Infra\BMS.Infra.csproj" />
   </ItemGroup>
 
 </Project>

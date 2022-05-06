@@ -1,6 +1,5 @@
-using BMS.Application.Interfaces;
-using BMS.Application.Services;
 using BMS.Infra.Data;
+using BMS.Infra.Repository.Authentication;
 using BMS.Infra.Repository.LoanModule;
 using BMS.Infra.Repository.Register;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -60,7 +59,7 @@ namespace BMS.Api
                 };
             });
 
-            services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<ITokenRepository, TokenRepository>();
             services.AddScoped<IRegisterRepositroy, RegisterRepositroy>();
             services.AddScoped<ILoanRepository, LoanRepository>();
         }

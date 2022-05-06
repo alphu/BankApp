@@ -23,12 +23,12 @@ namespace BMS.Infra.Repository.Register
         {
             try
             {
-                //if (!Utility.IsValidEmail(customer.EmailAddress))
-                //    throw new AppException("Email Address is not valid.");
-                //if (!Utility.IsValidPan(customer.Pan))
-                //    throw new AppException("Pan Number is not valid.");
-                //if (!Utility.IsValidMobileNumber(customer.ContactNo))
-                //    throw new AppException("Phone Number is not valid.");
+            //    if (!Utility.IsValidEmail(customer.EmailAddress))
+            //        throw new Exception("Email Address is not valid.");
+            //    if (!Utility.IsValidPan(customer.Pan))
+            //        throw new Exception("Pan Number is not valid.");
+            //    if (!Utility.IsValidMobileNumber(customer.ContactNo))
+            //        throw new Exception("Phone Number is not valid.");
 
                 customer.CreatedDate = DateTime.UtcNow;
                 _dbcontext.Customer.Add(customer);
