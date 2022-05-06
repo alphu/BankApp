@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BMS.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,12 @@ namespace BMS.Infra.Data
         public BankDBContext(DbContextOptions<BankDBContext> opt_Db) : base(opt_Db)
         {
         }
-        //public DbSet<Customer> Customer { get; set; }
-        //public DbSet<Loan> Loan { get; set; }
+        public DbSet<Customer> Customer { get; set; }
+        public DbSet<Loan> Loan { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\ProjectsV13;Database=BMS;Trusted_Connection=True;");
+        }
     }
 }

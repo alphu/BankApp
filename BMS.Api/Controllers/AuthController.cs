@@ -31,6 +31,15 @@ namespace BMS.Api.Controllers
             }
             return Ok(token);
         }
-      
+        [HttpPost, Route("refresh")]
+        public IActionResult Refresh(Response tokens)
+        {
+            var principal = _tokenService.GetPrincipalFromExpiredToken(tokens.Access_Token);
+            Request user = new Request();
+            user.Username = principal.Identity?.Name;
+            var token = _tokenService.GenerateRefreshToken(user);
+            return Ok(token);
+        }
+
     }
 }

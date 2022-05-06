@@ -1,4 +1,6 @@
 using BMS.Application.Interfaces;
+using BMS.Application.Services;
+using BMS.Infra.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,7 +31,8 @@ namespace BMS.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+         
+            services.AddDbContext<BankDBContext>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -54,7 +57,9 @@ namespace BMS.Api
                     IssuerSigningKey = new SymmetricSecurityKey(Key)
                 };
             });
-            services.AddScoped<ITokenService>();
+
+            services.AddScoped<ITokenService, TokenService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

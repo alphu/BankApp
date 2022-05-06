@@ -12,7 +12,7 @@ namespace BMS.Application.Interfaces
     {
         Response AuthenticateToken(Request Users);
         string GenerateRefreshToken();
-        //Response GenerateRefreshToken(Request user);
+        Response GenerateRefreshToken(Request user);
         ClaimsPrincipal GetPrincipalFromExpiredToken(string token);
         bool IsValidUser(Request user);
     }

@@ -53,6 +53,11 @@ namespace BMS.Application.Services
             return new Response { Access_Token = tokenHandler.WriteToken(token) ,Refresh_Token= refreshToken };
 
         }
+        public Response GenerateRefreshToken(Request user)
+        {
+            return AuthenticateToken(user);
+        }
+
         public string GenerateRefreshToken()
         {
             var randomNumber = new byte[32];
@@ -88,15 +93,15 @@ namespace BMS.Application.Services
 
         public bool IsValidUser(Request user)
         {
-            //try
-            //{
-            //    bool IsUserExist = _dbContext.use.Where(x => x.Username == user.Username && x.Password == user.Password).Any();
-            //    return IsUserExist;
-            //}
-            //catch (Exception ex)s
-            //{
-            //    throw new AppException(ex.Message);
-            //}
+            try
+            {
+                bool IsUserExist = _dbContext.Customer.Where(x => x.Username == user.Username && x.Password == user.Password).Any();
+                return IsUserExist;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
             return true;
         }
     }
