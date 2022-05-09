@@ -22,12 +22,12 @@ namespace BMS.Api.Controllers
             _loanRepository = loanRepository;
         }
         [HttpGet, Route("getloanlist")]
-        public IActionResult GetAccountDetails()
+        public IActionResult GetLoanDetails()
         {
             return Ok(_loanRepository.GetAllLoanDetails());
         }
         [HttpPost, Route("applyloan")]
-        public IActionResult CreateAccount([FromBody] Loan loan)
+        public IActionResult CreateLoan([FromBody] Loan loan)
         {
             try
             {
@@ -40,11 +40,24 @@ namespace BMS.Api.Controllers
             }
         }
         [HttpGet, Route("getLoan/{loanId}")]
-        public IActionResult GetAccount(int loanId)
+        public IActionResult GetLoan(int loanId)
         {
             try
             {
                 var result = _loanRepository.GetLoan(loanId);
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        [HttpGet, Route("getAllLoanByCustomer/{customerId}")]
+        public IActionResult GetAllLoanByCustomer(int customerId)
+        {
+            try
+            {
+                var result = _loanRepository.GetAllLoanByCustomer(customerId);
                 return Ok(result);
             }
             catch (Exception)

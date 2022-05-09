@@ -12,5 +12,6 @@ namespace BMS.Infra.Repository.LoanModule
 
         List<Loan> GetAllLoanDetails();
         Loan GetLoan(int loanId);
+        Loan GetAllLoanByCustomer(int CustomerId);
     }
 }

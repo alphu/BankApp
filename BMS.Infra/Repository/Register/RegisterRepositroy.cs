@@ -1,13 +1,12 @@
 ﻿using BMS.Domain.Entities;
 using BMS.Infra.Data;
 using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using BMS.Application;
 namespace BMS.Infra.Repository.Register
 {
     public class RegisterRepositroy : IRegisterRepositroy
@@ -23,12 +22,12 @@ namespace BMS.Infra.Repository.Register
         {
             try
             {
-            //    if (!Utility.IsValidEmail(customer.EmailAddress))
-            //        throw new Exception("Email Address is not valid.");
-            //    if (!Utility.IsValidPan(customer.Pan))
-            //        throw new Exception("Pan Number is not valid.");
-            //    if (!Utility.IsValidMobileNumber(customer.ContactNo))
-            //        throw new Exception("Phone Number is not valid.");
+                if (!Validator.IsValidEmail(customer.EmailAddress))
+                    throw new Exception("Email Address is not valid.");
+                if (!Validator.IsValidPan(customer.Pan))
+                    throw new Exception("Pan Number is not valid.");
+                if (!Validator.IsValidMobileNumber(customer.ContactNo))
+                    throw new Exception("Phone Number is not valid.");
 
                 customer.CreatedDate = DateTime.UtcNow;
                 _dbcontext.Customer.Add(customer);

@@ -92,5 +92,25 @@ namespace BMS.Infra.Repository.LoanModule
                     _dbcontext.Dispose();
             }
         }
+        public Loan GetAllLoanByCustomer(int CustomerId)
+        {
+            try
+            {
+                var data = _dbcontext.Loan
+                    .Where(b => b.CustomerId == CustomerId)
+                    .FirstOrDefault();
+                return data;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw;
+            }
+            finally
+            {
+                if (_dbcontext != null)
+                    _dbcontext.Dispose();
+            }
+        }
     }
 }

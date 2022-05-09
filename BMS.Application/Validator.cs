@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BMS.Application
 {
-    public static class Utility
+    public static class Validator
     {
         public static bool IsValidEmail(string emailId)
         {
