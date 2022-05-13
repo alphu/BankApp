@@ -8,12 +8,15 @@
     <Compile Remove="Repository\NewFolder1\**" />
     <Compile Remove="Repository\NewFolder2\**" />
     <Compile Remove="Repository\NewFolder3\**" />
+    <Compile Remove="Repository\NewFolder\**" />
     <EmbeddedResource Remove="Repository\NewFolder1\**" />
     <EmbeddedResource Remove="Repository\NewFolder2\**" />
     <EmbeddedResource Remove="Repository\NewFolder3\**" />
+    <EmbeddedResource Remove="Repository\NewFolder\**" />
     <None Remove="Repository\NewFolder1\**" />
     <None Remove="Repository\NewFolder2\**" />
     <None Remove="Repository\NewFolder3\**" />
+    <None Remove="Repository\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,10 +34,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Repository\NewFolder\" />
   </ItemGroup>
 
   <ItemGroup>

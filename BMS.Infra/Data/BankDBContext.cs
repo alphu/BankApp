@@ -18,7 +18,6 @@ namespace BMS.Infra.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\ProjectsV13;Database=BMS;Trusted_Connection=True;");
         }
     }
 }

@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  bms.api:
+    image: ${DOCKER_REGISTRY-}bmsapi
+    build:
+      context: .
+      dockerfile: BMS.Api/Dockerfile
+  mssql-server:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"

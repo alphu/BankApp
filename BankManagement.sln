@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BMS.Domain", "BMS.Domain\BM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BMS.Infra", "BMS.Infra\BMS.Infra.csproj", "{4C3D1596-3003-4B1D-82FB-5E8A97090506}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BMS.Test", "BMS.Test\BMS.Test.csproj", "{C097FCB4-5D82-4101-92DE-814ACD8EE5CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BMS.Test", "BMS.Test\BMS.Test.csproj", "{C097FCB4-5D82-4101-92DE-814ACD8EE5CB}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{3401121B-9C12-4DE6-9F45-69D657493B05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{C097FCB4-5D82-4101-92DE-814ACD8EE5CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C097FCB4-5D82-4101-92DE-814ACD8EE5CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C097FCB4-5D82-4101-92DE-814ACD8EE5CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3401121B-9C12-4DE6-9F45-69D657493B05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3401121B-9C12-4DE6-9F45-69D657493B05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3401121B-9C12-4DE6-9F45-69D657493B05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3401121B-9C12-4DE6-9F45-69D657493B05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
